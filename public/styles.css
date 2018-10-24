@@ -10,6 +10,10 @@ h1 {
     text-align: center;
 }
 
+form {
+    margin-bottom: 10px
+}
+
 input {
     padding: .5em .6em;
     display: inline-block;

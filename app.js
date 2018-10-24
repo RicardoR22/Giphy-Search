@@ -11,7 +11,7 @@ app.use(express.static('public'));
 app.get('/', function(req, res){
     if (req.query.term) {
         giphy.search(req.query.term, function(err, response){
-            res.render('home', {gifs: response.data});
+            res.render('home', {gifs: response.data, term: req.query.term});
         });
     } else {
         giphy.trending(function(err, response){

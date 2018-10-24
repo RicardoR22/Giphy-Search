@@ -9,9 +9,16 @@ app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 
 app.get('/', function(req, res){
-    giphy.search(req.query.term, function(err, response){
-        res.render('home', {gifs: response.data});
-    });
+    if (req.query.term) {
+        giphy.search(req.query.term, function(err, response){
+            res.render('home', {gifs: response.data});
+        });
+    } else {
+        giphy.trending(function(err, response){
+            res.render('home', {gifs: response.data});
+        });
+    }
+
 });
 // app.get('/', function(req, res){
 //     console.log(req.query.term);
